@@ -1,0 +1,50 @@
+{
+  "name": "evidnet-server",
+  "version": "0.1.0",
+  "description": "EvidNET Backend with Admin Pages",
+  "main": "server/index.ts",
+  "keywords": [
+    "nestjs",
+    "react",
+    "mobx",
+    "adminpage",
+    "typescript",
+    "evidnet",
+    "express",
+    "rxjs"
+  ],
+  "author": "Haze Lee <hazelee@realignist.me>",
+  "private": true,
+  "quokka": {
+    "plugins": [
+      "jsdom-quokka-plugin"
+    ],
+    "jsdom": {
+      "url": "http://localhost/"
+    }
+  },
+  "dependencies": {
+    "@nestjs/common": "^4.0.0",
+    "@nestjs/core": "^4.0.0",
+    "@nestjs/microservices": "^4.0.0",
+    "@nestjs/testing": "^4.0.0",
+    "@nestjs/websockets": "^4.0.0",
+    "@types/crypto-js": "^3.1.35",
+    "@types/mssql": "^4.0.6",
+    "@types/reflect-metadata": "0.0.5",
+    "argon2": "^0.16.1",
+    "mssql": "^4.0.4",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.4.3",
+    "typeorm": "0.1.0-alpha.42"
+  },
+  "devDependencies": {
+    "jsdom-quokka-plugin": "^1.0.6",
+    "mocha": "^3.5.3",
+    "supertest": "^3.0.0",
+    "tslint": "^5.7.0",
+    "tslint-config-standard": "^6.0.1",
+    "typescript": "^2.5.2",
+    "webpack": "^3.5.6"
+  }
+}
