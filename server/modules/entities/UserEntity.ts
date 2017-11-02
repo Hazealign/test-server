@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm'
+import { Followship } from './FollowshipEntity'
+import { Star } from './StarEntity'
 
 @Entity()
 export class User {
@@ -8,7 +10,7 @@ export class User {
   @Column('datetime')
   createdAt: Date
 
-  @Column('date')
+  @Column('datetime')
   approvedAt: Date | null
 
   @Column({ type: 'varchar', length: 20 })
@@ -28,4 +30,16 @@ export class User {
 
   @Column({ type: 'varchar', length: 'max' })
   profileImage: string
+
+  @OneToMany(type => Followship, following => following.from)
+  @JoinColumn()
+  followings: Followship[]
+
+  @OneToMany(type => Followship, follower => follower.to)
+  @JoinColumn()
+  followers: Followship[]
+
+  @OneToMany(type => Star, star => star.from)
+  @JoinColumn()
+  stars: Star[]
 }

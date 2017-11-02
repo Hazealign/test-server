@@ -59,4 +59,8 @@ export abstract class AbstractService<T> {
   public async remove (entity: T): Promise<T> {
     return (await this.repository).remove(entity)
   }
+
+  public async removeAll (entity: T[]): Promise<T[]> {
+    return (await this.repository).remove(entity)
+  }
 }

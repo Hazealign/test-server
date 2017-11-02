@@ -1,9 +1,9 @@
 import { AbstractService } from '../database/AbstractService'
-import { User } from './UserEntity'
+import { User } from '../entities/UserEntity'
 import { AbstractController, QueryType } from '../database/BaseController'
 import { Get, Query, Request as Req, Response as Resp, Controller } from '@nestjs/common'
 import { Request as RequestType, Response as ResponseType } from 'express'
-import { UserService } from './UserService'
+import { UserService } from '../services/UserService'
 
 @Controller('users')
 export class UserController extends AbstractController<User> {
