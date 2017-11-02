@@ -10,7 +10,7 @@ export class UserController extends AbstractController<User> {
   readonly service: AbstractService<User>
 
   constructor (userService: UserService) {
-    super(userService)
+    super(userService, 'users')
   }
 
   @Get()

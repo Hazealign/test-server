@@ -16,15 +16,8 @@
   "author": "Haze Lee <hazelee@realignist.me>",
   "private": true,
   "scripts": {
-    "test": "tsc --watch & ava --watch"
-  },
-  "quokka": {
-    "plugins": [
-      "jsdom-quokka-plugin"
-    ],
-    "jsdom": {
-      "url": "http://localhost/"
-    }
+    "test": "tsc --watch & ava --watch",
+    "start:develop": "ts-node server/server.ts develop"
   },
   "dependencies": {
     "@nestjs/common": "^4.0.0",
@@ -37,11 +30,14 @@
     "@types/express": "^4.0.37",
     "@types/mocha": "^2.2.43",
     "@types/mssql": "^4.0.6",
+    "@types/pluralize": "0.0.28",
     "@types/reflect-metadata": "0.0.5",
     "argon2": "*",
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "mssql": "^4.0.4",
+    "pluralize": "^7.0.0",
+    "r2": "^2.0.0",
     "raven": "^2.1.2",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.4.3",

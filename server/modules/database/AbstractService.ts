@@ -26,6 +26,20 @@ export abstract class AbstractService<T> {
     return (await this.repository).find(options)
   }
 
+  public async count (query: QueryType): Promise<number> {
+    const order = {}
+    if (query.sortKey !== undefined) {
+      order[query.sortKey] = query.sortDesc
+    }
+
+    const opt: FindManyOptions<T> = {
+      where: query.values,
+      order: order
+    }
+
+    return (await this.repository).count(opt)
+  }
+
   public async find (query: QueryType): Promise<T[]> {
     const order = {}
     if (query.sortKey !== undefined) {
