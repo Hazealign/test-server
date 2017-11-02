@@ -38,7 +38,7 @@
     "@types/mocha": "^2.2.43",
     "@types/mssql": "^4.0.6",
     "@types/reflect-metadata": "0.0.5",
-    "argon2": "^0.16.1",
+    "argon2": "*",
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "mssql": "^4.0.4",

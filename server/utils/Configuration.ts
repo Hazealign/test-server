@@ -13,6 +13,8 @@ export class Configuration {
   sentry: string
 
   constructor (json: any) {
+    json.database.entities = [ __dirname + '/../**/**Entity{.js,.ts}']
+
     this.database = json.database as ConnectionOptions
     this.redis = {}
     this.port = json.port

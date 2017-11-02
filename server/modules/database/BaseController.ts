@@ -6,9 +6,22 @@ import { AbstractService } from './AbstractService'
 export interface QueryType {
   pageNo: number,
   length: number,
-  values: { [key: string]: any },
-  sortKey: string,
-  sortDesc: 'ASC' | 'DESC'
+  values: { [key: string]: any } | undefined,
+  sortKey: string | undefined,
+  sortDesc: 'ASC' | 'DESC' | undefined
+}
+
+export abstract class EmptyController<T> {
+  abstract service: AbstractService<T>
+
+  constructor (service: AbstractService<T>) {
+    this.service = service
+  }
+
+  sendResponse (res: ResponseType, resp: Response) {
+    const { code, value } = resp
+    res.status(code).json(value)
+  }
 }
 
 export abstract class AbstractController<T> {

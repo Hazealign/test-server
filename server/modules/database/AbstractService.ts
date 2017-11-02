@@ -1,4 +1,4 @@
-import { QueryType } from './AbstractController'
+import { QueryType } from './BaseController'
 import { FindManyOptions, Repository } from 'typeorm'
 
 export abstract class AbstractService<T> {
@@ -28,7 +28,9 @@ export abstract class AbstractService<T> {
 
   public async find (query: QueryType): Promise<T[]> {
     const order = {}
-    order[query.sortKey] = query.sortDesc
+    if (query.sortKey !== undefined) {
+      order[query.sortKey] = query.sortDesc
+    }
 
     const opt: FindManyOptions<T> = {
       where: query.values,
