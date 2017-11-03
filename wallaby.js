@@ -8,7 +8,7 @@ module.exports = (wallaby) => {
     ],
 
     tests: [
-      'test/**/*Spec.ts'
+      'test/**/*.spec.ts'
     ],
     
     compilers: {
