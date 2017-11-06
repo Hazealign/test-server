@@ -1,7 +1,7 @@
 import { Component, Inject } from '@nestjs/common'
 import { Repository } from 'typeorm'
 import { User } from '../entities/UserEntity'
-import { AbstractService } from '../database/AbstractService'
+import { AbstractService } from '../core/AbstractService'
 
 @Component()
 export class UserService extends AbstractService<User> {

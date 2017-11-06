@@ -1,6 +1,6 @@
-import { AbstractService } from '../database/AbstractService'
+import { AbstractService } from '../core/AbstractService'
 import { User } from '../entities/UserEntity'
-import { AbstractController, QueryType } from '../database/BaseController'
+import { AbstractController, QueryType } from '../core/BaseController'
 import { Get, Query, Request as Req, Response as Resp, Controller } from '@nestjs/common'
 import { Request as RequestType, Response as ResponseType } from 'express'
 import { UserService } from '../services/UserService'

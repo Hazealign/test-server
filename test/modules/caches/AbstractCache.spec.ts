@@ -1,4 +1,4 @@
-import { AbstractCache, ExpiredAt, ExpiredAtType, RedisSetting, TimeUnit } from '../../../server/modules/cache/AbstractCache'
+import { AbstractCache, ExpiredAt, ExpiredAtType, RedisSetting, TimeUnit } from '../../../src/modules/cache/AbstractCache'
 import { test } from 'ava'
 
 interface TestEntity {

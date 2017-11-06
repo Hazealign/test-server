@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common'
 import { UserController } from '../controllers/UserController'
 import { UserService } from '../services/UserService'
 import { userProviders } from '../providers/UserProviders'
-import { DatabaseModule } from '../database/DatabaseModule'
+import { DatabaseModule } from '../core/DatabaseModule'
 
 @Module({
   modules: [DatabaseModule],

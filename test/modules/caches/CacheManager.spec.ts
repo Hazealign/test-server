@@ -1,7 +1,7 @@
 import { test } from 'ava'
 import { AbstractCache, TimeUnit, ExpiredAtType, RedisSetting, ExpiredAt }
-   from '../../../server/modules/cache/AbstractCache'
-import { CacheManager } from '../../../server/modules/cache/CacheManager'
+   from '../../../src/modules/cache/AbstractCache'
+import { CacheManager } from '../../../src/modules/cache/CacheManager'
 
 interface TestEntity {
   name: string
