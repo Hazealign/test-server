@@ -1,4 +1,4 @@
-import { Response, sendResponse } from '../common/Constants'
+import { Response, sendResponse } from '../core/Constants'
 import { Request as RequestType, Response as ResponseType } from 'express'
 import { HttpStatus } from '@nestjs/common'
 import { AbstractService } from './AbstractService'

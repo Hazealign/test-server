@@ -1,5 +1,5 @@
 import { Project } from './ProjectEntity'
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm'
 
 @Entity()
 export class Log {

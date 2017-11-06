@@ -1,5 +1,4 @@
 import { ConnectionOptions } from 'typeorm/connection/ConnectionOptions'
-import { RedisOptions } from 'ioredis'
 
 export enum FilesProvider {
   Disk = 'Disk'
@@ -29,8 +28,7 @@ export class Configuration {
 
 export interface RedisConfig {
   host: string,
-  port: number,
-  options: RedisOptions
+  port: number
 }
 
 export interface FileConfig {

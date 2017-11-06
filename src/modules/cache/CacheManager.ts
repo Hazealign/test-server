@@ -1,3 +1,4 @@
+import { SessionCache } from './SessionCache'
 import { AbstractCache } from './AbstractCache'
 import { AssertionError } from 'assert'
 
@@ -11,7 +12,9 @@ export abstract class CacheManager {
 }
 
 class CacheManagerImpl extends CacheManager {
-  caches: AbstractCache<any>[] = []
+  caches: AbstractCache<any>[] = [
+    new SessionCache()
+  ]
 
   getCacheService (key: string): AbstractCache<any> {
     const candidates = this.caches.filter(cache => cache.prefix === key)

@@ -52,8 +52,8 @@ export abstract class AbstractCache<T> {
       throw new Error('undefined assertions.')
     }
 
-    const { port, host, options } = this.setting
-    this.connection = new Redis(port, host, options)
+    const { port, host } = this.setting
+    this.connection = new Redis(port, host)
   }
 
   get (key: string): Promise<T> {

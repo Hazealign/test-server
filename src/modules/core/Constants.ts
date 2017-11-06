@@ -15,11 +15,22 @@ export class Response {
     this.code = code
     this.value = value
     if (ex !== undefined) this.value['exception'] = ex.message
+
+    // Censoring Passwords
+    if (this.value.hasOwnProperty('user')) {
+      this.value['user']['password'] = undefined
+    }
+
+    if (this.value.hasOwnProperty('users')) {
+      this.value['users'].forEach(element => {
+        element['password'] = undefined
+      })
+    }
   }
 
-  static catch (code: number): (Response | undefined) {
+  static catch (code: number): (Response) {
     const result = this.list.filter(resp => resp.code === code)
-    if (result.length < 1) return undefined
+    if (result.length < 1) throw new Error('Code Not Found')
     else return result[0]
   }
 }

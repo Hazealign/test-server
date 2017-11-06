@@ -4,12 +4,6 @@ import { FindManyOptions, Repository } from 'typeorm'
 export abstract class AbstractService<T> {
   abstract repository: Repository<T>
 
-  constructor () {
-    this.seed()
-  }
-
-  abstract seed (): Promise<void>
-
   public async upsert (entity: T): Promise<T> {
     return (await this.repository).persist(entity)
   }
