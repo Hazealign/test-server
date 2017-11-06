@@ -7,9 +7,9 @@ import * as pluralize from 'pluralize'
 export interface QueryType {
   pageNo: number,
   length: number,
-  values: { [key: string]: any } | undefined,
-  sortKey: string | undefined,
-  sortDesc: 'ASC' | 'DESC' | undefined
+  values: { [key: string]: any },
+  sortKey?: string,
+  sortDesc?: 'ASC' | 'DESC'
 }
 
 export abstract class EmptyController<T> {

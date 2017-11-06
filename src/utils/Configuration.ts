@@ -1,4 +1,5 @@
 import { ConnectionOptions } from 'typeorm/connection/ConnectionOptions'
+import { RedisOptions } from 'ioredis'
 
 export enum FilesProvider {
   Disk = 'Disk'
@@ -7,7 +8,7 @@ export enum FilesProvider {
 
 export class Configuration {
   database: ConnectionOptions
-  redis: any
+  redis: RedisConfig
   port: number
   files: FileConfig
   sentry: string
@@ -16,7 +17,7 @@ export class Configuration {
     json.database.entities = [ __dirname + '/../**/**Entity{.js,.ts}']
 
     this.database = json.database as ConnectionOptions
-    this.redis = {}
+    this.redis = json.redis as RedisConfig
     this.port = json.port
     this.sentry = json.sentry
     this.files = {
@@ -24,6 +25,12 @@ export class Configuration {
       directory: (json.files.directory as string)
     }
   }
+}
+
+export interface RedisConfig {
+  host: string,
+  port: number,
+  options: RedisOptions
 }
 
 export interface FileConfig {
@@ -35,7 +42,7 @@ export interface FileConfig {
 export function getConfiguration (): Configuration {
   const arg = process.argv[2]
   try {
-    return new Configuration(require(`./../configs/${arg}`))
+    return new Configuration(require(`./../config/${arg}`))
   } catch (ex) {
     throw new Error(`Can't find valid config args. ${arg}`)
   }

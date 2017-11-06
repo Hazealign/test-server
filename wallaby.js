@@ -4,7 +4,7 @@ module.exports = (wallaby) => {
   return {
     name: 'Evidnet Server v2',
     files: [
-      'server/**/*.ts'
+      'src/**/*.ts'
     ],
 
     tests: [
