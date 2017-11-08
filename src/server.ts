@@ -1,3 +1,4 @@
+import { User } from './modules/entities/UserEntity'
 import { getConfiguration } from './utils/Configuration'
 import { ApplicationModule } from './modules/ApplicationModule'
 import { NestFactory } from '@nestjs/core'
@@ -8,6 +9,12 @@ import 'reflect-metadata'
 
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
+
+declare module 'express' {
+  interface Request {
+    user: User | undefined
+  }
+}
 
 async function bootstrap () {
   const conf = getConfiguration()

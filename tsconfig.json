@@ -1,15 +1,15 @@
 {
-	"version": "2.5.3",
-	"compilerOptions": {
-		"target": "es2015",
-		"allowSyntheticDefaultImports": true,
-		"preserveConstEnums": true,
-		"sourceMap": true,
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"lib": [
-			"es6",
-			"es7"
+  "version": "2.5.3",
+  "compilerOptions": {
+    "target": "es2015",
+    "allowSyntheticDefaultImports": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": [
+      "es6",
+      "es7"
     ],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -17,13 +17,15 @@
     "noImplicitAny": false,
     "noImplicitReturns": false,
     "removeComments": true,
-		"noUnusedLocals": true,
+    "noUnusedLocals": true,
     "strictNullChecks": true,
-    "types": ["node"]
-	},
-	"exclude": [
-		"node_modules",
-		"server/**/*.spec.ts"
-	],
-	"compileOnSave": false
+    "types": [
+      "node"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "server/**/*.spec.ts"
+  ],
+  "compileOnSave": false
 }

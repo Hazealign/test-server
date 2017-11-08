@@ -1,16 +1,25 @@
 {
-   "database": {
-       "type": "mssql", 
-       "host": "localhost",
-       "port": 1433,
-       "username": "sa",
-       "password": "T3stLog1n",
-       "database": "Evidnet",
-       "autoSchemaSync": true
-   }, "port": 3000,
-   "sentry": "",
-   "files": {
-       "provider": "Disk",
-       "directory": "C:\\Users\\Realignist\\Desktop\\Evidnet"
-   }
+  "database": {
+    "type": "mssql",
+    "host": "localhost",
+    "port": 1433,
+    "username": "sa",
+    "password": "T3stLog1n",
+    "database": "Evidnet",
+    "autoSchemaSync": true
+  },
+  "port": 3000,
+  "sentry": "",
+  "files": {
+    "provider": "Disk",
+    "directory": "C:\\Users\\Realignist\\Desktop\\Evidnet"
+  },
+  "email": {
+    "secure": true,
+    "port": 465,
+    "auth": {
+      "user": "evidnet.master@gmail.com",
+      "pass": "qwer1234!@"
+    }
+  }
 }

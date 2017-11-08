@@ -1,6 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm'
+import * as argon2 from 'argon2'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn, OneToOne } from 'typeorm'
 import { Followship } from './FollowshipEntity'
 import { Star } from './StarEntity'
+import { Permission } from './PermissionEntity'
+import { Organization } from './OrganizationEntity'
 
 @Entity()
 export class User {
@@ -20,7 +23,10 @@ export class User {
   email: string
 
   @Column()
-  approved: boolean
+  emailConfirmed: boolean = false
+
+  @Column()
+  approved: boolean = false
 
   @Column({ type: 'varchar', length: 50 })
   password: string
@@ -30,6 +36,13 @@ export class User {
 
   @Column({ type: 'varchar', length: 'max' })
   profileImage: string
+
+  @OneToOne(type => Organization)
+  organization: Organization
+
+  @OneToMany(type => Permission, permission => permission.user)
+  @JoinColumn()
+  permissions: Permission[]
 
   @OneToMany(type => Followship, following => following.from)
   @JoinColumn()
@@ -42,4 +55,15 @@ export class User {
   @OneToMany(type => Star, star => star.from)
   @JoinColumn()
   stars: Star[]
+
+  public async setPassword (newPassword: string) {
+    try {
+      const hash = await argon2.hash(newPassword, {
+        timeCost: 4, memoryCost: 13, parallelism: 2, type: argon2.argon2d
+      })
+      this.password = hash
+    } catch (exception) {
+      throw new Error('Argon2: ' + exception)
+    }
+  }
 }

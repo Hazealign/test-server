@@ -12,7 +12,7 @@ module.exports = (wallaby) => {
     ],
     
     compilers: {
-      '**/*.ts?(x)': wallaby.compilers.typeScript(tsConfig)
+      '**/*.ts?(x)': wallaby.compilers.typeScript(tsConfig.compilerOptions)
     },
     env: {
       type: 'node',
