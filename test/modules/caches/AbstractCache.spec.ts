@@ -7,13 +7,13 @@ interface TestEntity {
 }
 
 @ExpiredAt(new ExpiredAtType(100, TimeUnit.DAYS))
-@RedisSetting('testCache', { host: '127.0.0.1', port: 6379, options: {} })
+@RedisSetting('testCache', { host: '127.0.0.1', port: 6379 })
 class TestCache extends AbstractCache<TestEntity> { }
 
 @ExpiredAt(new ExpiredAtType())
 class InvalidTestCache extends AbstractCache<TestEntity> { }
 
-@RedisSetting('test2Cache', { host: '127.0.0.1', port: 6379, options: {} })
+@RedisSetting('test2Cache', { host: '127.0.0.1', port: 6379 })
 class Test2Cache extends AbstractCache<TestEntity> { }
 
 test('TestCache class can save and read entity.', async test => {

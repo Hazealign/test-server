@@ -9,7 +9,7 @@ interface TestEntity {
 }
 
 @ExpiredAt(new ExpiredAtType(100, TimeUnit.DAYS))
-@RedisSetting('testCache', { host: '127.0.0.1', port: 6379, options: {} })
+@RedisSetting('testCache', { host: '127.0.0.1', port: 6379 })
 class TestCache extends AbstractCache<TestEntity> { }
 
 test('Inject and Get TestCache', async test => {
