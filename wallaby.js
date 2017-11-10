@@ -14,6 +14,14 @@ module.exports = (wallaby) => {
     compilers: {
       '**/*.ts?(x)': wallaby.compilers.typeScript(tsConfig.compilerOptions)
     },
+    
+    preprocessors: {
+      '**/*.js?(x)': f => (
+        require('fs').unlinkSync(require('path').join(wallaby.projectCacheDir, f.path.replace('.js', '.ts'))), 
+        f.content
+      )
+    },
+    
     env: {
       type: 'node',
       runner: 'node'
