@@ -26,7 +26,7 @@ async function bootstrap () {
   instance.use(Raven.requestHandler())
 
   const nestApp = await NestFactory.create(ApplicationModule)
-  await nestApp.listen(conf.port)
+  await nestApp.listen(conf.server.port)
 }
 
 // for graceful debugging :)

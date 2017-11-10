@@ -1,6 +1,6 @@
 import * as Redis from 'ioredis'
 import * as crypto from 'crypto'
-import { RedisConfig } from '../../utils/Configuration'
+import { ServerInfo } from '../../utils/Configuration'
 
 export enum TimeUnit {
   YEARS = 1000 * 60 * 60 * 24 * 365,
@@ -23,7 +23,7 @@ export class ExpiredAtType {
 
 // ------------- Class Decorators
 
-export function RedisSetting (prefix: string, config: RedisConfig) {
+export function RedisSetting (prefix: string, config: ServerInfo) {
   return (target: Function) => {
     target.prototype.prefix = prefix
     target.prototype.setting = config
@@ -43,7 +43,7 @@ export abstract class AbstractCache<T> {
   // @ts-ignore
   prefix: string
   // @ts-ignore
-  private setting: RedisConfig
+  private setting: ServerInfo
   // @ts-ignore
   private expiredAt: ExpiredAtType
 

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm'
-import { Project } from './ProjectEntity';
+import { Project } from './ProjectEntity'
 
 export enum BoardType {
     Organization = 'Organization',

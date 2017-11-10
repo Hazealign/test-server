@@ -20,15 +20,3 @@ test.before(async test => {
 test('assert service is not null', async test => {
   test.false(service === undefined || service === null)
 })
-
-test('signIn find user by Id and Password', async test => {
-
-})
-
-test('emailConfirm do email checking', async test => {
-
-})
-
-test('approving user by admin user', async test => {
-
-})

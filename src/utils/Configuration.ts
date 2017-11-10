@@ -1,77 +1,49 @@
 import { ConnectionOptions } from 'typeorm/connection/ConnectionOptions'
 import { DirectOptions } from 'nodemailer-direct-transport'
 
-export enum FilesProvider {
-  Disk = 'Disk'
-  // AmazonS3 = 'AmazonS3'
+const testConfig = {
+  'database': {
+    'type': 'sqlite',
+    'database': 'database.db',
+    'synchronize': true,
+    'logging': false,
+    'name': new Date().getTime().toString()
+  },
+  'redis': {
+    'host': '127.0.0.1',
+    'port': 6379
+  },
+  'server': {
+    'host': '127.0.0.1',
+    'port': 3000
+  }, 'baseDir': 'D:\\'
 }
 
-let developConf = {
-  'database': {
-    'type': 'mssql',
-    'host': 'localhost',
-    'port': 1433,
-    'username': 'sa',
-    'password': 'T3stLog1n',
-    'database': 'Evidnet',
-    'autoSchemaSync': true
-  }, 'port': 3000,
-  'sentry': '',
-  'files': {
-    'provider': 'Disk',
-    'directory': 'C:\\Users\\Realignist\\Desktop\\Evidnet'
-  }, 'email': {
-    'secure': true,
-    'port': 465,
-    'auth': {
-      'user': 'evidnet.master@gmail.com',
-      'pass': 'qwer1234!@'
-    }
-  }
+export interface ServerInfo {
+  host: string
+  port: number
 }
 
 export class Configuration {
   database: ConnectionOptions
-  redis: RedisConfig
-  port: number
-  files: FileConfig
+  redis: ServerInfo
+  server: ServerInfo
   sentry: string
+  baseDir: string
   email: DirectOptions
 
   constructor (json: any) {
-    json.database.entities = [ __dirname + '/../**/**Entity{.js,.ts}']
-
-    this.email = json.email as DirectOptions
+    json.database.entities = [ '**/**Entity.ts']
     this.database = json.database as ConnectionOptions
-    this.redis = json.redis as RedisConfig
-    this.port = json.port
-    this.sentry = json.sentry
-    this.files = {
-      provider: FilesProvider[json.files.provider as string],
-      directory: (json.files.directory as string)
-    }
+    this.redis = json.redis as ServerInfo
+    this.server = json.server as ServerInfo
+    this.sentry = 'https://b2d5997ca36f47b380c88ba697dd86ca@sentry.io/240126'
+    this.baseDir = json.baseDir
+    this.email = json.email as DirectOptions
   }
-}
-
-export interface RedisConfig {
-  host: string,
-  port: number
-}
-
-export interface FileConfig {
-  provider: FilesProvider,
-  directory: string,
-  // connection?: any
 }
 
 export function getConfiguration (): Configuration {
   const arg = process.argv[2]
-
-  if (arg === 'runner') return new Configuration(developConf)
-
-  try {
-    return new Configuration(require(`./../config/${arg}`))
-  } catch (ex) {
-    throw new Error(`Can't find valid config args. ${arg}`)
-  }
+  return new Configuration(arg === 'develop' ? require('./../config/develop') : testConfig)
 }

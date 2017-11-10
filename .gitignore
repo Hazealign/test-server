@@ -178,3 +178,4 @@ $RECYCLE.BIN/
 
 # Customized for EvidNET
 dist/
+database.db
