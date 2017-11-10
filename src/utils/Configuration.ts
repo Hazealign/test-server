@@ -45,5 +45,7 @@ export class Configuration {
 
 export function getConfiguration (): Configuration {
   const arg = process.argv[2]
-  return new Configuration(arg === 'develop' ? require('./../config/develop') : testConfig)
+  const result = arg === 'develop' ? require('./../config/develop') : testConfig
+
+  return new Configuration(result)
 }

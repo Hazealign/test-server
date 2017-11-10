@@ -176,6 +176,6 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/node,code,macos,windows,webstorm+all
 
-# Customized for EvidNET
+# Customized for Test
 dist/
 database.db

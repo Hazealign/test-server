@@ -78,8 +78,8 @@ export class UserController extends AbstractController<User> {
     const cache: SessionCache = CacheManager.factory().getCacheService('session')
     const key = cache.hashByTimestamp()
     await cache.set(key, result)
-    await sendMail(result.email, '[EvidNET] Mail Authorization',
-      `Press <a href="http://evidnet.net/api/users/${result.id}/confirm/${key}">this link</a>.`, true)
+    await sendMail(result.email, '[Test] Mail Authorization',
+      `Press <a href="http://Test.net/api/users/${result.id}/confirm/${key}">this link</a>.`, true)
 
     sendResponse(res, new Response(HttpStatus.OK, added))
   }

@@ -1,7 +1,7 @@
 {
-  "name": "evidnet-server",
+  "name": "Test-server",
   "version": "0.1.0",
-  "description": "EvidNET Backend with Admin Pages",
+  "description": "Test Backend with Admin Pages",
   "main": "server/index.ts",
   "keywords": [
     "nestjs",
@@ -9,7 +9,7 @@
     "mobx",
     "adminpage",
     "typescript",
-    "evidnet",
+    "Test",
     "express",
     "rxjs"
   ],

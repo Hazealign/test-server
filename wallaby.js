@@ -2,7 +2,7 @@ const tsConfig = require('./tsconfig.json')
 
 module.exports = (wallaby) => {
   return {
-    name: 'Evidnet Server v2',
+    name: 'Test Server v2',
     files: [
       'src/**/*.ts'
     ],
